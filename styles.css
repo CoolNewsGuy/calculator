@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -41,4 +42,13 @@ body {
     min-height: var(--calculator-seperator-height);
     width: var(--calculator-seperator-width);
     margin: 0 auto;
+}
+
+.functions {
+    color: white;
+    font-size: 40px;
+}
+
+.functions .expo {
+    font-size: 25px;
 }
