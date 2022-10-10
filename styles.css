@@ -47,6 +47,37 @@ body {
     margin: 0 auto;
 }
 
+.typer #operation {
+    color: white;
+    font-size: 50px;
+    text-align: right;
+    padding: 20px;
+    position: relative;
+}
+
+.typer #operation sup {
+    display: inline-block;
+    position: relative;
+    bottom: 50px;
+    font-size: 30px;
+}
+
+.typer #operation #operator {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.typer #result {
+    text-align: right;
+    font-size: 35px;
+    color: grey;
+    padding: 20px;
+}
+
+.typer .result-symbol {
+    margin-right: 10px;
+}
+
 .functions {
     color: white;
     font-size: 40px;
