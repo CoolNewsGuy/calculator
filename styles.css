@@ -87,6 +87,7 @@ body {
     justify-content: center;
     gap: 60px;
     margin-top: 20px;
+    user-select: none;
 }
 
 .functions .row {
@@ -136,6 +137,7 @@ body {
 
 .functions .base {
     font-size: 30px;
+    width: 15px;
 }
 
 .functions .exponent {
