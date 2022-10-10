@@ -4,8 +4,9 @@
     --calculator-radius: 12px;
     --calculator-color: #010101;
     --calculator-operations-color: #ff7534;
-    --calculator-seperator-width: calc(var(--calculator-width) - 30px);
+    --calculator-seperator-width: calc(var(--calculator-width) - 10px);
     --calculator-seperator-height: 0.5px;
+    --caclulator-seperator-color: #d9d9d9;
     --calculator-typer-height: 157px;
     --calculator-functions-height: 485px;
     --calculator-functions-button-hover: #564c4c;
@@ -29,4 +30,15 @@ body {
     width: var(--calculator-width);
     background: var(--calculator-color);
     border-radius: var(--calculator-radius);
+}
+
+.calculator .typer {
+    min-height: var(--calculator-typer-height);
+}
+
+.calculator .seperator {
+    background: var(--caclulator-seperator-color);
+    min-height: var(--calculator-seperator-height);
+    width: var(--calculator-seperator-width);
+    margin: 0 auto;
 }
