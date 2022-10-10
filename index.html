@@ -15,18 +15,17 @@
     <body>
         <div class="calculator">
             <div class="typer">
-                <div id="operation">
-                    <span id="left-operand">0</span>
-                    <span id="operator">+</span
-                    ><span id="right-operand">5</span>
-                </div>
+                <div id="operation">14+5</div>
                 <div id="result">43</div>
             </div>
             <div class="seperator"></div>
             <div class="functions">
                 <div class="row row-1">
                     <span onclick="clearTyper()" id="clear" class="red">c</span>
-                    <span id="delete" class="orange"
+                    <span
+                        onclick="deleteCharacters()"
+                        id="delete"
+                        class="orange"
                         ><i class="fa-solid fa-delete-left delete"></i
                     ></span>
                     <span id="remainder" class="orange modulus">&percnt;</span>
