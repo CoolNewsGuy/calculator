@@ -10,6 +10,8 @@
     --calculator-typer-height: 157px;
     --calculator-functions-height: 485px;
     --calculator-functions-button-hover: #564c4c;
+    --calculator-functions-column-width: 68px;
+    --calculator-functions-column-height: 431px;
 }
 
 * {
