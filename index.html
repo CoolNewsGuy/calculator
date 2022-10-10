@@ -14,40 +14,43 @@
     </head>
     <body>
         <div class="calculator">
-            <div class="typer"></div>
+            <div class="typer">
+                <div id="operation"></div>
+                <div id="result"></div>
+            </div>
             <div class="seperator"></div>
             <div class="functions">
                 <div class="row row-1">
-                    <span class="red">c</span>
-                    <span class="orange"
+                    <span id="clear" class="red">c</span>
+                    <span id="delete" class="orange"
                         ><i class="fa-solid fa-delete-left delete"></i
                     ></span>
-                    <span class="orange modulus">&percnt;</span>
-                    <span class="orange">&divide;</span>
+                    <span id="remainder" class="orange modulus">&percnt;</span>
+                    <span id="division" class="orange">&divide;</span>
                 </div>
                 <div class="row row-2">
                     <span>7</span>
                     <span>8</span>
                     <span>9</span>
-                    <span class="orange">&times;</span>
+                    <span id="multiplication" class="orange">&times;</span>
                 </div>
                 <div class="row row-3">
                     <span>4</span>
                     <span>5</span>
                     <span>6</span>
-                    <span class="orange">&minus;</span>
+                    <span id="subtraction" class="orange">&minus;</span>
                 </div>
                 <div class="row row-4">
                     <span>1</span>
                     <span>2</span>
                     <span>3</span>
-                    <span class="orange">&plus;</span>
+                    <span id="addition" class="orange">&plus;</span>
                 </div>
                 <div class="row row-5">
                     <span class="base">x<sup class="exponent">y</sup></span>
                     <span>0</span>
-                    <span>.</span>
-                    <span class="equal">&equals;</span>
+                    <span id="point">.</span>
+                    <span id="equal" class="equal">&equals;</span>
                 </div>
             </div>
         </div>
