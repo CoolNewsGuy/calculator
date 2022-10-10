@@ -1,4 +1,5 @@
 "use strict";
+
 let operation = document.getElementById("operation"),
     result = document.getElementById("result");
 
@@ -13,6 +14,15 @@ function deleteCharacters() {
     if (operation.textContent === "") operation.innerText = "0";
 }
 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Backspace") deleteCharacters();
-});
+function playShortcuts(e) {
+    switch (e.key) {
+        case "Backspace":
+            deleteCharacters();
+        case "c":
+        case "C":
+            clearTyper();
+    }
+}
+
+document.addEventListener("keydown", playShortcuts);
+document.addEventListener("keydown", (e) => console.log(e.key));
