@@ -1,6 +1,7 @@
+/* ! Change Flexbox of rows and function */
 :root {
     --calculator-width: 394px;
-    --calculator-height: 644px;
+    --calculator-height: 700px;
     --calculator-radius: 12px;
     --calculator-color: #010101;
     --calculator-operations-color: #ff7534;
@@ -49,8 +50,61 @@ body {
 .functions {
     color: white;
     font-size: 40px;
+    min-height: var(--calculator-functions-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
 }
 
-.functions .expo {
+.functions .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.functions span {
+    cursor: pointer;
+}
+
+.functions .delete {
+    font-size: 28px;
+}
+.functions .modulus {
+    font-size: 24px;
+}
+
+.functions .base {
+    font-size: 30px;
+}
+
+.functions .exponent {
     font-size: 25px;
+}
+
+.functions .equal {
+    position: relative;
+    z-index: 1;
+}
+
+.functions .equal::after {
+    content: "";
+    position: absolute;
+    background: var(--calculator-operations-color);
+    height: 68px;
+    width: 68px;
+    border-radius: 50%;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    z-index: -1;
+}
+
+.functions .orange {
+    color: var(--calculator-operations-color);
+}
+
+.functions .red {
+    color: red;
 }
