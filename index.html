@@ -15,13 +15,17 @@
     <body>
         <div class="calculator">
             <div class="typer">
-                <div id="operation">1<span id="operator">+</span>3</div>
-                <div id="result">4</div>
+                <div id="operation">
+                    <span id="left-operand">0</span>
+                    <span id="operator">+</span
+                    ><span id="right-operand">5</span>
+                </div>
+                <div id="result">43</div>
             </div>
             <div class="seperator"></div>
             <div class="functions">
                 <div class="row row-1">
-                    <span id="clear" class="red">c</span>
+                    <span onclick="clearTyper()" id="clear" class="red">c</span>
                     <span id="delete" class="orange"
                         ><i class="fa-solid fa-delete-left delete"></i
                     ></span>

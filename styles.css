@@ -8,7 +8,7 @@
     --calculator-seperator-width: calc(var(--calculator-width) - 20px);
     --calculator-seperator-height: 1px;
     --caclulator-seperator-color: #d9d9d9;
-    --calculator-typer-height: 157px;
+    --calculator-typer-height: 178px;
     --calculator-functions-height: 485px;
     --calculator-functions-button-hover: #564c4c;
     --calculator-functions-column-width: 68px;
@@ -50,25 +50,20 @@ body {
 .typer #operation {
     color: white;
     font-size: 50px;
-    text-align: right;
     padding: 20px;
-    position: relative;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
 }
 
 .typer #operation sup {
     display: inline-block;
-    position: relative;
     bottom: 50px;
     font-size: 30px;
 }
 
-.typer #operation #operator {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 .typer #result {
-    text-align: right;
+    text-align: left;
     font-size: 35px;
     color: grey;
     padding: 20px;
