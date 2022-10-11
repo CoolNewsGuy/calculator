@@ -52,7 +52,7 @@ function playShortcuts(e) {
     }
 }
 
-function receiveUserInput(e) {
+function receiveKeyboardClicks(e) {
     if (e.key !== " " && [...Array(10).keys()].includes(+e.key))
         operation.textContent === "0"
             ? (operation.textContent = e.key)
@@ -60,4 +60,4 @@ function receiveUserInput(e) {
 }
 
 document.addEventListener("keydown", playShortcuts);
-document.addEventListener("keypress", receiveUserInput);
+document.addEventListener("keypress", receiveKeyboardClicks);
