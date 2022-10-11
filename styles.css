@@ -56,6 +56,8 @@ body {
     justify-content: start;
     gap: 10px;
     overflow-wrap: anywhere;
+    outline: none;
+    caret-color: transparent;
 }
 
 .typer #operation sup {

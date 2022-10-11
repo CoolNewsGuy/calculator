@@ -13,6 +13,7 @@ function deleteCharacters() {
     if (operation.textContent !== "0")
         operation.innerText = operation.innerText.slice(0, -1);
     if (operation.textContent === "") operation.innerText = "0";
+    deleteSpaces();
 }
 
 function playShortcuts(e) {
@@ -71,9 +72,48 @@ function receiveUserClicks() {
     else operation.textContent += this.textContent;
 }
 
+function operate() {
+    let operationParts = operation.textContent.split(" "),
+        leftOperand = +operationParts[0],
+        operator = operationParts[1],
+        rightOperand;
+    if (operationParts[2] !== " ") rightOperand = +operationParts[2];
+
+    switch (operator) {
+        case "+":
+            result.textContent = leftOperand + rightOperand;
+            break;
+        case "−":
+            result.textContent = leftOperand - rightOperand;
+            break;
+        case "×":
+            result.textContent = leftOperand * rightOperand;
+            break;
+        case "÷":
+            rightOperand === 0
+                ? (result.textContent = "Error")
+                : (result.textContent = leftOperand / rightOperand);
+            break;
+        case "%":
+            rightOperand === 0
+                ? (result.textContent = "Error")
+                : (result.textContent = leftOperand % rightOperand);
+    }
+}
+
+function deleteSpaces() {
+    let operations = ["+", "÷", "%", "−", "×"].some((op) =>
+        operation.textContent.includes(op)
+    );
+    if (operation.textContent.includes(" ") && !operations)
+        operation.textContent = operation.textContent.replace(" ", "");
+}
+
 document.addEventListener("keydown", playShortcuts);
 document.addEventListener("keypress", receiveKeyboardClicks);
+document.addEventListener("keyup", operate);
 
-buttons.forEach((button) =>
-    button.addEventListener("click", receiveUserClicks)
-);
+buttons.forEach((button) => {
+    button.addEventListener("click", receiveUserClicks);
+    button.addEventListener("click", operate);
+});
