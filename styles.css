@@ -34,6 +34,7 @@ body {
     width: var(--calculator-width);
     background: var(--calculator-color);
     border-radius: var(--calculator-radius);
+    user-select: none;
 }
 
 .calculator .typer {
@@ -86,7 +87,6 @@ body {
     justify-content: center;
     gap: 60px;
     margin-top: 20px;
-    user-select: none;
 }
 
 .functions .row {
