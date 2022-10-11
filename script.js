@@ -73,11 +73,17 @@ function receiveUserClicks() {
 }
 
 function operate() {
+    let operations = ["+", "÷", "%", "−", "×"].some((op) =>
+        operation.textContent.includes(op)
+    );
+
     let operationParts = operation.textContent.split(" "),
         leftOperand = +operationParts[0],
         operator = operationParts[1],
         rightOperand;
+
     if (operationParts[2] !== " ") rightOperand = +operationParts[2];
+    if (!operations) result.textContent = leftOperand;
 
     switch (operator) {
         case "+":
