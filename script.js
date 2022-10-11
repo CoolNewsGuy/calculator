@@ -51,6 +51,9 @@ function playShortcuts(e) {
         case ".":
             operation.textContent += ".";
             break;
+
+        case "^":
+            operation.textContent += " " + "^" + " ";
     }
 }
 
@@ -69,20 +72,21 @@ function receiveUserClicks() {
         operation.textContent = this.textContent;
     else if (["+", "%", "−", "×", "÷"].includes(this.textContent))
         operation.textContent += " " + this.textContent + " ";
+    else if (this.classList.contains("base"))
+        operation.textContent += " " + "^" + " ";
     else operation.textContent += this.textContent;
 }
 
 function operate() {
-    let operations = ["+", "÷", "%", "−", "×"].some((op) =>
+    let operations = ["+", "÷", "%", "−", "×", "^"].some((op) =>
         operation.textContent.includes(op)
     );
 
     let operationParts = operation.textContent.split(" "),
         leftOperand = +operationParts[0],
         operator = operationParts[1],
-        rightOperand;
+        rightOperand = +operationParts[2];
 
-    if (operationParts[2] !== " ") rightOperand = +operationParts[2];
     if (!operations) result.textContent = leftOperand;
 
     switch (operator) {
@@ -104,11 +108,14 @@ function operate() {
             rightOperand === 0
                 ? (result.textContent = "Error")
                 : (result.textContent = leftOperand % rightOperand);
+            break;
+        case "^":
+            result.textContent = leftOperand ** rightOperand;
     }
 }
 
 function deleteSpaces() {
-    let operations = ["+", "÷", "%", "−", "×"].some((op) =>
+    let operations = ["+", "÷", "%", "−", "×", "^"].some((op) =>
         operation.textContent.includes(op)
     );
     if (operation.textContent.includes(" ") && !operations)
