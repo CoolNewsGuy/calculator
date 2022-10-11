@@ -1,7 +1,8 @@
 "use strict";
 
 let operation = document.getElementById("operation"),
-    result = document.getElementById("result");
+    result = document.getElementById("result"),
+    buttons = document.querySelectorAll("span.btn");
 
 function clearTyper() {
     operation.textContent = "0";
@@ -59,5 +60,20 @@ function receiveKeyboardClicks(e) {
             : (operation.textContent += e.key);
 }
 
+function receiveUserClicks() {
+    if (
+        operation.textContent === "0" &&
+        !["+", "%", "−", "×", "÷"].includes(this.textContent)
+    )
+        operation.textContent = this.textContent;
+    else if (["+", "%", "−", "×", "÷"].includes(this.textContent))
+        operation.textContent += " " + this.textContent + " ";
+    else operation.textContent += this.textContent;
+}
+
 document.addEventListener("keydown", playShortcuts);
 document.addEventListener("keypress", receiveKeyboardClicks);
+
+buttons.forEach((button) =>
+    button.addEventListener("click", receiveUserClicks)
+);
