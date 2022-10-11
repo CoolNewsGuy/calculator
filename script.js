@@ -72,8 +72,6 @@ function receiveUserClicks() {
         operation.textContent = this.textContent;
     else if (["+", "%", "−", "×", "÷"].includes(this.textContent))
         operation.textContent += " " + this.textContent + " ";
-    else if (this.classList.contains("base"))
-        operation.textContent += " " + "^" + " ";
     else operation.textContent += this.textContent;
 }
 
@@ -93,24 +91,31 @@ function operate() {
         case "+":
             result.textContent = leftOperand + rightOperand;
             break;
+
         case "−":
             result.textContent = leftOperand - rightOperand;
             break;
+
         case "×":
             result.textContent = leftOperand * rightOperand;
             break;
+
         case "÷":
             rightOperand === 0
                 ? (result.textContent = "Error")
                 : (result.textContent = leftOperand / rightOperand);
             break;
+
         case "%":
             rightOperand === 0
                 ? (result.textContent = "Error")
                 : (result.textContent = leftOperand % rightOperand);
             break;
+
         case "^":
-            result.textContent = leftOperand ** rightOperand;
+            rightOperand === 0 && leftOperand === 0
+                ? (result.textContent = "Error")
+                : (result.textContent = leftOperand ** rightOperand);
     }
 }
 
@@ -120,6 +125,10 @@ function deleteSpaces() {
     );
     if (operation.textContent.includes(" ") && !operations)
         operation.textContent = operation.textContent.replace(" ", "");
+}
+
+function writeExponent() {
+    operation.textContent += " " + "^" + " ";
 }
 
 document.addEventListener("keydown", playShortcuts);
