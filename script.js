@@ -54,6 +54,10 @@ function playShortcuts(e) {
 
         case "^":
             operation.textContent += " " + "^" + " ";
+            break;
+
+        case "Enter":
+            getResult();
     }
 }
 
@@ -67,7 +71,7 @@ function receiveKeyboardClicks(e) {
 function receiveUserClicks() {
     if (
         operation.textContent === "0" &&
-        !["+", "%", "−", "×", "÷"].includes(this.textContent)
+        !["+", "%", "−", "×", "÷", "."].includes(this.textContent)
     )
         operation.textContent = this.textContent;
     else if (["+", "%", "−", "×", "÷"].includes(this.textContent))
@@ -86,6 +90,10 @@ function operate() {
         rightOperand = +operationParts[2];
 
     if (!operations) result.textContent = leftOperand;
+
+    if (result.textContent === "NaN") {
+        result.innerText = "Error";
+    }
 
     switch (operator) {
         case "+":
@@ -117,6 +125,8 @@ function operate() {
                 ? (result.textContent = "Error")
                 : (result.textContent = leftOperand ** rightOperand);
     }
+
+    console.log(operationParts.length);
 }
 
 function deleteSpaces() {
@@ -131,11 +141,27 @@ function writeExponent() {
     operation.textContent += " " + "^" + " ";
 }
 
+function getResult() {
+    if (result.textContent === "Error") result.textContent = "0";
+    operation.textContent = result.textContent;
+}
+
+function allowOnlyOneOperation() {
+    let operationParts = operation.textContent.split(" ");
+
+    if (operationParts.length > 3) {
+        if (result.textContent === "Error") result.textContent = "0";
+        operation.textContent = result.textContent;
+    }
+}
+
 document.addEventListener("keydown", playShortcuts);
 document.addEventListener("keypress", receiveKeyboardClicks);
 document.addEventListener("keyup", operate);
+document.addEventListener("keypress", allowOnlyOneOperation);
 
 buttons.forEach((button) => {
     button.addEventListener("click", receiveUserClicks);
     button.addEventListener("click", operate);
+    button.addEventListener("click", allowOnlyOneOperation);
 });

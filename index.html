@@ -53,12 +53,16 @@
                     <span id="addition" class="btn orange">&plus;</span>
                 </div>
                 <div class="row row-5">
-                    <span class="base orange expo-btn" onclick="writeExponent()"
+                    <span
+                        class="base orange expo-btn"
+                        onclick="writeExponent(); allowOnlyOneOperation()"
                         >x<sup class="exponent">y</sup></span
                     >
                     <span class="btn">0</span>
-                    <span class="btn" id="point">.</span>
-                    <span id="equal" class="equal">&equals;</span>
+                    <span class="btn orange" id="point">.</span>
+                    <span onclick="getResult()" id="equal" class="equal"
+                        >&equals;</span
+                    >
                 </div>
             </div>
         </div>
