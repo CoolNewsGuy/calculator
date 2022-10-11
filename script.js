@@ -45,7 +45,7 @@ function playShortcuts(e) {
 
         case "−":
         case "-":
-            operation.textContent += " " + "−" + " ";
+            operation.textContent += " " + "-" + " ";
             break;
 
         case ".":
@@ -74,13 +74,14 @@ function receiveUserClicks() {
         !["+", "%", "−", "×", "÷", "."].includes(this.textContent)
     )
         operation.textContent = this.textContent;
-    else if (["+", "%", "−", "×", "÷"].includes(this.textContent))
+    else if (["+", "%", "×", "÷"].includes(this.textContent))
         operation.textContent += " " + this.textContent + " ";
+    else if (this.textContent === "−") operation.textContent += " " + "-" + " ";
     else operation.textContent += this.textContent;
 }
 
 function operate() {
-    let operations = ["+", "÷", "%", "−", "×", "^"].some((op) =>
+    let operations = ["+", "÷", "%", "-", "×", "^"].some((op) =>
         operation.textContent.includes(op)
     );
 
@@ -100,7 +101,7 @@ function operate() {
             result.textContent = leftOperand + rightOperand;
             break;
 
-        case "−":
+        case "-":
             result.textContent = leftOperand - rightOperand;
             break;
 
@@ -125,12 +126,11 @@ function operate() {
                 ? (result.textContent = "Error")
                 : (result.textContent = leftOperand ** rightOperand);
     }
-
-    console.log(operationParts.length);
+    console.log(result);
 }
 
 function deleteSpaces() {
-    let operations = ["+", "÷", "%", "−", "×", "^"].some((op) =>
+    let operations = ["+", "÷", "%", "-", "×", "^"].some((op) =>
         operation.textContent.includes(op)
     );
     if (operation.textContent.includes(" ") && !operations)
@@ -146,22 +146,33 @@ function getResult() {
     operation.textContent = result.textContent;
 }
 
-function allowOnlyOneOperation() {
+function allowOnlyOneOperationWithKeyboard(e) {
     let operationParts = operation.textContent.split(" ");
 
     if (operationParts.length > 3) {
-        if (result.textContent === "Error") result.textContent = "0";
-        operation.textContent = result.textContent;
+        getResult();
+        if (e.key === "*") operation.textContent += " " + "×" + " ";
+        else operation.textContent += " " + e.key + " ";
+    }
+}
+
+function allowOnlyOneOperationWithClicks() {
+    let operationParts = operation.textContent.split(" ");
+
+    if (operationParts.length > 3) {
+        getResult();
+        if (this.textContent === "−") operation.textContent += " " + "-" + " ";
+        else operation.textContent += " " + this.textContent + " ";
     }
 }
 
 document.addEventListener("keydown", playShortcuts);
 document.addEventListener("keypress", receiveKeyboardClicks);
 document.addEventListener("keyup", operate);
-document.addEventListener("keypress", allowOnlyOneOperation);
+document.addEventListener("keypress", allowOnlyOneOperationWithKeyboard);
 
 buttons.forEach((button) => {
     button.addEventListener("click", receiveUserClicks);
     button.addEventListener("click", operate);
-    button.addEventListener("click", allowOnlyOneOperation);
+    button.addEventListener("click", allowOnlyOneOperationWithClicks);
 });
