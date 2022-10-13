@@ -155,3 +155,22 @@ body {
 .functions .equal:hover::after {
     background: #f00;
 }
+
+@media (max-width: 400px) {
+    body {
+        background: var(--calculator-color);
+        -webkit-tap-highlight-color: transparent;
+        height: 100vh;
+        position: relative;
+    }
+
+    .calculator {
+        min-height: 100%;
+        position: absolute;
+        border-radius: 0;
+    }
+
+    .functions {
+        gap: 90px;
+    }
+}
